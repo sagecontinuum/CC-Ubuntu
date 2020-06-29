@@ -48,3 +48,5 @@ Cloned/run by Jenkins with https://github.com/ChameleonCloud/abracadabra
 
 If the script is run by Abracadabra, it looks for the magic line "Image built
 in (path)", so don't change that (without changing the other).
+
+This is a test.
