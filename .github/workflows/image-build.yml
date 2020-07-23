@@ -24,7 +24,7 @@ jobs:
       run: git fetch && git pull origin master
 
     # Runs a single command using the runners shell
-    - name: Run a one-line script
+    - name: Install requirements
       run: sudo ./install-reqs.sh
 
 
@@ -41,4 +41,4 @@ jobs:
 
     - name: Build image for KVM site
       run: |
-        python create-image.py --release bionic --variant sage --region KVM@TACC --kvm,
+        python create-image.py --release bionic --variant sage --region KVM@TACC,
