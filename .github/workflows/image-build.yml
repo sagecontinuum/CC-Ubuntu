@@ -6,7 +6,7 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ image-build-action ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,27 +19,26 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v1
-    
+
     - name: make sure everything is up-to-date
       run: git fetch && git pull
-    
+
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: sudo ./install-reqs.sh
-      
+
 
     # Runs a set of commands using the runners shell
     - name: Build images for CHI@UC site
       run: |
         python create-image.py --release bionic --variant sage --region CHI@UC,
 
-        
+
     - name: Build images for CHI@TACC site
       run: |
         python create-image.py --release bionic --variant sage --region CHI@TACC,
-        
-        
+
+
     - name: Build image for KVM site
       run: |
         python create-image.py --release bionic --variant sage --region kvm --kvm,
-        
